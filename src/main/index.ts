@@ -9,7 +9,10 @@ function createWindow() {
   const mainWindow = new BrowserWindow({ 
     width: 800,
     height: 600,
-    icon: path.resolve(__dirname, '../../public/icons/256x256.png')
+    icon: path.resolve(__dirname, '../../public/icons/256x256.png'),
+    webPreferences: {
+      preload: path.join(__dirname, 'preload.cjs.js'),
+    }
   })
 
   mainWindow.loadURL(loadURL)
