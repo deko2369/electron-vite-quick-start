@@ -50,8 +50,8 @@ export default defineComponent({
     return { count }
   },
   methods: {
-    clickPreload() {
-      window.api.doAthing()
+    async clickPreload() {
+      await window.api.showDialog('Hello!')
     }
   }
 })

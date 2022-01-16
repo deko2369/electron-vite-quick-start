@@ -1,6 +1,5 @@
-import { contextBridge } from 'electron'
+import { contextBridge, ipcRenderer } from 'electron'
 
 contextBridge.exposeInMainWorld('api', {
-  doAthing: () => console.log('hello'),
-  doBthing: () => console.log('hi')
+  showDialog: (msg: string) => ipcRenderer.invoke('show-dialog', msg)
 })

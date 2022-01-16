@@ -1,5 +1,5 @@
 import * as path from 'path'
-import { app, BrowserWindow } from 'electron'
+import { app, BrowserWindow, dialog, ipcMain } from 'electron'
 
 const loadURL = import.meta.env.PROD
   ? `file://${path.resolve(__dirname, '../renderer/index.html')}`
@@ -18,6 +18,12 @@ function createWindow() {
   mainWindow.loadURL(loadURL)
 
   // mainWindow.webContents.openDevTools()
+
+  ipcMain.handle('show-dialog', (event, arg) => {
+    dialog.showMessageBoxSync(mainWindow, {
+      message: `received message from renderer process: ${arg}`
+    })
+  })
 }
 
 app.whenReady().then(() => {

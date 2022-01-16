@@ -1,6 +1,5 @@
 export interface IElectronAPI {
-  doAthing: () => void
-  doBthing: () => void
+  showDialog: (msg: string) => Promise<any>
 }
 
 declare global {
